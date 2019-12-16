@@ -196,7 +196,7 @@ bool TestRunner::checkQueryTestResults(mbgl::PremultipliedImage&& actualImage,
         return true;
     }
 
-    mbgl::util::write_file(base + "/actual.json", metadata.actualJson);
+    mbgl::util::write_file((mbgl::filesystem::path(base )/ "actual.json").string(), metadata.actualJson);
 #endif
 
     std::vector<std::string> expectedJsonPaths;

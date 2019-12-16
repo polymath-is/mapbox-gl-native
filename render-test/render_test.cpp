@@ -188,7 +188,11 @@ int runRenderTests(int argc, char** argv, std::function<void()> testStatus) {
 
         bool errored = !metadata.errorMessage.empty();
         if (!errored) {
-            errored = !runner.run(metadata) || !metadata.errorMessage.empty();
+            try {
+                errored = !runner.run(metadata) || !metadata.errorMessage.empty();}
+            catch(std::runtime_error& e) {
+                printf( "error is %s", e.what());
+            }
         }
 
         bool passed =
